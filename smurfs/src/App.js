@@ -3,7 +3,7 @@ import "./App.css";
 
 //components
 import Smurfs from "./components/Smurfs";
-import { Form } from "./components/Form";
+import Form from "./components/Form";
 
 function App() {
   return (

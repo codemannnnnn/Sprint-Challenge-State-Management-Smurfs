@@ -1,9 +1,7 @@
 import axios from "axios";
 
 export const FETCH_DATA_START = "FETCH_DATA_START";
-
-export const FETCH_DATA_INFO = "FETCH_DATA_INFO";
-
+export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
 export const fetchData = () => {
   return (dispatch) => {
     dispatch({ type: FETCH_DATA_START });
@@ -13,7 +11,7 @@ export const fetchData = () => {
       .then((res) => {
         console.log({ res });
 
-        dispatch({ type: FETCH_DATA_INFO, payload: res.data[0] });
+        dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
         // res.data are objects
       })
       .catch((err) => console.log(err));
@@ -21,16 +19,15 @@ export const fetchData = () => {
 };
 
 export const POST_DATA_START = "POST_DATA_START";
-export const POST_DATA_INFO = "POST_DATA_INFO";
-
-export const postData = () => {
+export const POST_DATA_SUCCESS = "POST_DATA_SUCCESS";
+export const postData = (smurf) => {
   return (dispatch) => {
     dispatch({ type: POST_DATA_START });
 
     axios
-      .post("http://localhost:3333/smurfs")
+      .post("http://localhost:3333/smurfs", smurf)
       .then((res) => {
-        dispatch({ type: POST_DATA_INFO, payload: res.data[0] });
+        dispatch({ type: POST_DATA_SUCCESS, payload: res.data });
       })
       .catch((err) => console.log(err));
   };
