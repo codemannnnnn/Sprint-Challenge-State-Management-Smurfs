@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+}
+
+.main-charac {
+  border: 1px solid black;
+}
+.smurf-form {
+  border: 1px solid black;
+  padding: 2%;
+  border-radius: 20px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  background: lightgrey;
+}
