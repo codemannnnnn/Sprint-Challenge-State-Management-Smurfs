@@ -3,38 +3,35 @@ import { connect } from "react-redux";
 
 import { fetchData } from "../store/actions";
 
-import Smurf from "./Smurf";
-import Form from "./Form";
+import Smurf from "./Smurf.js";
+import Form from "./Form.js";
 
-const Smurfs = ({ isFetching, pullsData, isPosting, error }) => {
+function Smurfs({ isFetching, isPosting, smurfData, fetchData }) {
   useEffect(() => {
     fetchData();
   }, []);
 
   return (
-    <main>
-      <div>
-        <h2>Smurf Info</h2>
-        {isFetching && <h3>Fetching Data</h3>}
-        {isPosting && <h3>Posting Your Smurf</h3>}
-        {!isFetching &&
-          !isPosting &&
-          pullsData &&
-          pullsData.map((item) => {
-            return <Smurf key={item.id} item={item} />;
-          })}
-
-        <Form />
-      </div>
-    </main>
+    <div className="smurfs">
+      <h2>Smurf it up</h2>
+      {isFetching && <h2>Fetching Smurf Data...</h2>}
+      {isPosting && <h2>Posting New Smurf...</h2>}
+      {!isFetching &&
+        !isPosting &&
+        smurfData &&
+        smurfData.map((item) => {
+          return <Smurf key={item.id} item={item} />;
+        })}
+      <Form />
+    </div>
   );
-};
+}
 
 const mapStateToProps = (state) => {
   return {
-    isFetching: state.smurfR.isFetching,
-    isPosting: state.smurfR.isPosting,
-    pullsData: state.smurfR.pullsData,
+    isFetching: state.smurfs.isFetching,
+    isPosting: state.smurfs.isPosting,
+    smurfData: state.smurfs.smurfData,
   };
 };
 

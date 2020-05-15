@@ -10,18 +10,18 @@ const initialForm = {
 };
 
 function Form({ postData }) {
-  const [smurfFormState, setSmurfFormState] = useState(initialForm);
+  const [smurfForm, setSmurfForm] = useState(initialForm);
 
   const onSubmit = (event) => {
     event.preventDefault();
-    postData(smurfFormState);
+    postData(smurfForm);
 
-    setSmurfFormState(initialForm);
+    setSmurfForm(initialForm);
   };
 
-  const onChange = (event) => {
-    setSmurfFormState({
-      ...smurfFormState,
+  const changeOn = (event) => {
+    setSmurfForm({
+      ...smurfForm,
       [event.target.name]: event.target.value,
     });
   };
@@ -30,27 +30,27 @@ function Form({ postData }) {
     <form onSubmit={onSubmit} className="smurf-form">
       <h3>New Smurf</h3>
       <input
-        value={smurfFormState.name}
-        onChange={onChange}
+        value={smurfForm.name}
+        onChange={changeOn}
         type="text"
         name="name"
-        placeholder="Name"
+        placeholder="Smurf Name"
       />
       <input
-        value={smurfFormState.age}
-        onChange={onChange}
+        value={smurfForm.age}
+        onChange={changeOn}
         type="text"
         name="age"
-        placeholder="Age"
+        placeholder="Smurf Age"
       />
       <input
-        value={smurfFormState.height}
-        onChange={onChange}
+        value={smurfForm.height}
+        onChange={changeOn}
         type="text"
         name="height"
-        placeholder="Height"
+        placeholder="Smurf Height"
       />
-      <button onClick={onSubmit}>Add Smurf</button>
+      <button onClick={onSubmit}>Submit</button>
     </form>
   );
 }

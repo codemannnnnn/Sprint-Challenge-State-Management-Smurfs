@@ -9,12 +9,11 @@ export const fetchData = () => {
     axios
       .get("http://localhost:3333/smurfs")
       .then((res) => {
-        console.log({ res });
-
         dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
-        // res.data are objects
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 
@@ -29,6 +28,8 @@ export const postData = (smurf) => {
       .then((res) => {
         dispatch({ type: POST_DATA_SUCCESS, payload: res.data });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };

@@ -5,11 +5,10 @@ import {
   POST_DATA_SUCCESS,
 } from "../actions";
 
-const initialState = {
+export const initialState = {
   isFetching: false,
-  pullsData: false,
   isPosting: false,
-  error: "",
+  smurfData: null,
 };
 
 export const smurfReducer = (state = initialState, action) => {
@@ -19,25 +18,22 @@ export const smurfReducer = (state = initialState, action) => {
         ...state,
         isFetching: true,
       };
-
     case FETCH_DATA_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        pullsData: action.payload,
+        smurfData: action.payload,
       };
-
     case POST_DATA_START:
       return {
         ...state,
         isPosting: true,
       };
-
     case POST_DATA_SUCCESS:
       return {
         ...state,
         isPosting: false,
-        pullsData: action.payload,
+        smurfData: action.payload,
       };
 
     default:
